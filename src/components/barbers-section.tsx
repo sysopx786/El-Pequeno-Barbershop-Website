@@ -1,12 +1,15 @@
 import { loc, useI18n } from "@/lib/i18n";
 import { asset } from "@/lib/utils";
+import { EDWIN_PHOTO } from "@/lib/barber-photos/edwin";
+import { GABRIEL_PHOTO } from "@/lib/barber-photos/gabriel";
+import { JULIAN_PHOTO } from "@/lib/barber-photos/julian";
 
 const BARBERS = [
   {
     id: "edwin",
-    src: "/images/shop-chairs.jpg",
+    src: EDWIN_PHOTO,
     name: "Edwin \u201cEl Peque\u00f1o\u201d Torres",
-    pos: "center" as const,
+    pos: "left" as const,
     role: {
       en: "The one who built the shop",
       es: "El que arm\u00f3 la barber\u00eda",
@@ -25,7 +28,7 @@ const BARBERS = [
   },
   {
     id: "gabriel",
-    src: "/images/cut-fade-shape.jpg",
+    src: GABRIEL_PHOTO,
     name: "Gabriel",
     pos: "top" as const,
     role: {
@@ -46,9 +49,9 @@ const BARBERS = [
   },
   {
     id: "julian",
-    src: "/images/cut-fade-beard.jpg",
+    src: JULIAN_PHOTO,
     name: "Julian",
-    pos: "top" as const,
+    pos: "left" as const,
     role: {
       en: "The precision chair",
       es: "La silla de precisi\u00f3n",
