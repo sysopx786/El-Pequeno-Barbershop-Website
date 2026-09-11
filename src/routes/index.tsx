@@ -19,7 +19,7 @@ import { Button } from "@/components/ui/button";
 import { BarberPole } from "@/components/barber-pole";
 import { GoogleG, GoogleStars, InstagramMark } from "@/components/brand-marks";
 import { SocialLinks } from "@/components/social-links";
-import { cn } from "@/lib/utils";
+import { cn, asset } from "@/lib/utils";
 
 export const Route = createFileRoute("/")({ component: Home });
 
@@ -49,7 +49,7 @@ function ShopPage() {
         </h1>
         <div className="mx-auto max-w-xl px-4 sm:max-w-2xl sm:px-6">
           <img
-            src="/images/logo-el-peque.jpg"
+            src={asset("/images/logo-el-peque.jpg")}
             alt="El Peque Barber"
             className="w-full"
           />
@@ -111,10 +111,10 @@ function ShopPage() {
             controls
             playsInline
             preload="metadata"
-            poster={FEATURED_VIDEO.poster}
+            poster={asset(FEATURED_VIDEO.poster)}
             className="aspect-[9/16] w-full rounded-xl bg-ink-2 object-cover"
           >
-            <source src={FEATURED_VIDEO.src} type="video/mp4" />
+            <source src={asset(FEATURED_VIDEO.src)} type="video/mp4" />
           </video>
           <p className="mt-3 text-center text-sm font-medium uppercase tracking-[0.18em] text-cream">
             {t.featuredCut}
@@ -166,7 +166,7 @@ function ShopPage() {
             </div>
             <div className="relative">
               <img
-                src="/images/shop-chairs.jpg"
+                src={asset("/images/shop-chairs.jpg")}
                 alt={loc(lang, "Barber chairs", "Sillas de la barbería", "Cadeiras da barbearia")}
                 className="aspect-[16/10] w-full rounded-xl object-cover"
               />
@@ -226,7 +226,7 @@ function ShopPage() {
                     className="group relative block size-full overflow-hidden rounded-lg"
                   >
                     <img
-                      src={img.src}
+                      src={asset(img.src)}
                       alt={loc(lang, img.altEn, img.altEs)}
                       className="aspect-[3/4] size-full object-cover object-top transition-transform duration-300 ease-out group-hover:scale-[1.03]"
                     />
@@ -249,7 +249,7 @@ function ShopPage() {
                     className="group relative block size-full overflow-hidden rounded-lg"
                   >
                     <img
-                      src={img.src}
+                      src={asset(img.src)}
                       alt={loc(lang, img.altEn, img.altEs)}
                       className={cn(
                         "size-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.03]",
@@ -279,10 +279,10 @@ function ShopPage() {
                     controls
                     playsInline
                     preload="metadata"
-                    poster={v.poster}
+                    poster={asset(v.poster)}
                     className="aspect-[9/16] w-full rounded-xl bg-ink-2 object-cover"
                   >
-                    <source src={v.src} type="video/mp4" />
+                    <source src={asset(v.src)} type="video/mp4" />
                   </video>
                   <a
                     href={v.href}
@@ -422,7 +422,7 @@ function ShopPage() {
             <X className="size-7" />
           </button>
           <img
-            src={PHOTOS[lightbox].src}
+            src={asset(PHOTOS[lightbox].src)}
             alt={loc(lang, PHOTOS[lightbox].altEn, PHOTOS[lightbox].altEs)}
             className="max-h-[88vh] max-w-full rounded-lg object-contain"
             onClick={(e) => e.stopPropagation()}

@@ -17,6 +17,7 @@ screenshots/
 attachments/
 artifacts/
 AGENTS.md
+.pages-output
 
 # Grok sandbox internals (keep app-env.json)
 .grok/*

@@ -1,5 +1,7 @@
 # El Pequeño Barbershop
 
+**Live site:** [https://sysopx786.github.io/El-Pequeno-Barbershop-Website/](https://sysopx786.github.io/El-Pequeno-Barbershop-Website/)
+
 Website for **El Pequeño Barbershop** at 603 N 10th St, Reading, PA.
 
 Walk-ins welcome. Unisex. Open seven days. English, Español, and Portuguese.
@@ -23,6 +25,8 @@ Then open [http://localhost:8080](http://localhost:8080).
 npm run build
 npm run preview
 ```
+
+GitHub Pages is published from `main` via `.github/workflows/pages.yml`.
 
 ## Stack
 

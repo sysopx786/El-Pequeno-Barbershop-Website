@@ -4,6 +4,7 @@ import { SocialLinks } from "@/components/social-links";
 import { Button } from "@/components/ui/button";
 import { DAY_NAME, loc, useI18n } from "@/lib/i18n";
 import { HOUR_LABELS, SHOP, WEEK_HOURS } from "@/lib/shop";
+import { asset } from "@/lib/utils";
 
 export function SiteFooter() {
   const { t, lang } = useI18n();
@@ -84,7 +85,7 @@ export function SiteFooter() {
           </div>
           <div className="flex flex-col gap-4">
             <img
-              src="/images/shop-storefront.jpg"
+              src={asset("/images/shop-storefront.jpg")}
               alt={loc(lang, "El Pequeño storefront", "Fachada de El Pequeño", "Fachada da El Pequeño")}
               className="aspect-[16/10] w-full rounded-xl object-cover object-top"
             />
