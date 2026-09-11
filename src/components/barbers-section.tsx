@@ -1,10 +1,13 @@
 import { loc, useI18n } from "@/lib/i18n";
 import { asset } from "@/lib/utils";
+import { EDWIN_PHOTO } from "@/lib/barber-photos/edwin";
+import { GABRIEL_PHOTO } from "@/lib/barber-photos/gabriel";
+import { JULIAN_PHOTO } from "@/lib/barber-photos/julian";
 
 const BARBERS = [
   {
     id: "edwin",
-    src: "/images/barbers/edwin.svg",
+    src: EDWIN_PHOTO,
     name: "Edwin \u201cEl Peque\u00f1o\u201d Torres",
     pos: "center" as const,
     role: {
@@ -25,7 +28,7 @@ const BARBERS = [
   },
   {
     id: "gabriel",
-    src: "/images/barbers/gabriel.svg",
+    src: GABRIEL_PHOTO,
     name: "Gabriel",
     pos: "left" as const,
     role: {
@@ -46,7 +49,7 @@ const BARBERS = [
   },
   {
     id: "julian",
-    src: "/images/barbers/julian.svg",
+    src: JULIAN_PHOTO,
     name: "Julian",
     pos: "left" as const,
     role: {
