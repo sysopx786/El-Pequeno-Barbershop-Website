@@ -238,7 +238,7 @@ export function SiteHeader() {
           <Button asChild variant="call">
             <a href={`tel:${SHOP.phoneTel}`} onClick={closeMenu}>
               <Phone className="size-4" />
-              {t.callShop} \u00b7 {SHOP.phone}
+              {t.callShop} · {SHOP.phone}
             </a>
           </Button>
           <Button asChild variant="line">
@@ -250,7 +250,7 @@ export function SiteHeader() {
           <Button asChild variant="paper">
             <a href={SHOP.smsHref} onClick={closeMenu}>
               <MessageSquare className="size-4" />
-              {t.textShop} \u00b7 {SHOP.sms}
+              {t.textShop} · {SHOP.sms}
             </a>
           </Button>
           <LangChip full className="h-14 w-full" />
@@ -273,7 +273,7 @@ export function SiteHeader() {
             <BarberPole height={40} />
             <span className="leading-none">
               <span className="font-display block truncate text-[1.25rem] font-semibold uppercase tracking-[0.06em] sm:text-[1.5rem] sm:tracking-[0.08em]">
-                El Peque\u00f1o
+                El Pequeño
               </span>
               <span className="block text-[0.7rem] uppercase tracking-[0.28em] text-cream/80">
                 Barbershop
