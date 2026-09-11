@@ -66,17 +66,17 @@ export function SiteFooter() {
                 </li>
               ))}
             </ul>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button asChild variant="call">
+            <div className="mt-8 flex flex-wrap gap-2">
+              <Button asChild variant="call" size="sm">
                 <a href={`tel:${SHOP.phoneTel}`}>{t.callShop}</a>
               </Button>
-              <Button asChild variant="line">
+              <Button asChild variant="line" size="sm">
                 <a href={SHOP.smsHref}>
-                  <MessageSquare className="size-4" />
+                  <MessageSquare className="size-3.5" />
                   {t.textShop}
                 </a>
               </Button>
-              <Button asChild variant="line">
+              <Button asChild variant="line" size="sm">
                 <a href={SHOP.mapsUrl} target="_blank" rel="noreferrer">
                   {t.directions}
                 </a>
