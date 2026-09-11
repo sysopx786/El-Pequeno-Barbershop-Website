@@ -87,6 +87,8 @@ const copy = {
     reviewsGoogle: "See Google reviews",
     reviewsWrite: "Write a Google review",
     reviewsWord: "reviews",
+    reviewsMore: "More Google reviews",
+    reviewsLess: "Show fewer",
     visitKicker: "Find us",
     visitTitle: "603 North 10th Street.",
     visitLead:
@@ -215,6 +217,8 @@ const copy = {
     reviewsGoogle: "Ver reseñas de Google",
     reviewsWrite: "Escribir una reseña",
     reviewsWord: "reseñas",
+    reviewsMore: "Más reseñas de Google",
+    reviewsLess: "Ver menos",
     visitKicker: "Encuéntranos",
     visitTitle: "603 North 10th Street.",
     visitLead:
@@ -343,6 +347,8 @@ const copy = {
     reviewsGoogle: "Ver avaliações do Google",
     reviewsWrite: "Escrever uma avaliação",
     reviewsWord: "avaliações",
+    reviewsMore: "Mais avaliações do Google",
+    reviewsLess: "Ver menos",
     visitKicker: "Encontre a gente",
     visitTitle: "603 North 10th Street.",
     visitLead:

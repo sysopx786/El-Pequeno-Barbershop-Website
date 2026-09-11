@@ -23,6 +23,8 @@ import { cn, asset } from "@/lib/utils";
 
 export const Route = createFileRoute("/")({ component: Home });
 
+const REVIEW_PREVIEW = 8;
+
 function Home() {
   return (
     <LanguageProvider>
@@ -34,6 +36,7 @@ function Home() {
 function ShopPage() {
   const { t, lang } = useI18n();
   const [lightbox, setLightbox] = useState<number | null>(null);
+  const [showAllReviews, setShowAllReviews] = useState(false);
 
   useEffect(() => {
     document.documentElement.lang = lang === "pt" ? "pt-BR" : lang;
@@ -362,24 +365,35 @@ function ShopPage() {
                   {t.reviewsGoogle}
                 </a>
               </div>
-              <ul className="grid gap-3 sm:grid-cols-2">
-                {REVIEWS.map((r) => (
-                  <li
-                    key={r.name}
-                    className="flex flex-col justify-between rounded-xl border border-ink/10 bg-white p-5"
-                  >
-                    <div>
-                      <GoogleStars count={r.stars} className="flex gap-0.5" />
-                      <p className="mt-3 text-[0.95rem] leading-relaxed text-ink/85">
-                        “{loc(lang, r.quoteEn, r.quoteEs)}”
+              <div>
+                <ul className="grid gap-3 sm:grid-cols-2">
+                  {(showAllReviews ? REVIEWS.slice(1) : REVIEWS.slice(1, 1 + REVIEW_PREVIEW)).map((r) => (
+                    <li
+                      key={r.name}
+                      className="flex flex-col justify-between rounded-xl border border-ink/10 bg-white p-5"
+                    >
+                      <div>
+                        <GoogleStars count={r.stars} className="flex gap-0.5" />
+                        <p className="mt-3 text-[0.95rem] leading-relaxed text-ink/85">
+                          “{loc(lang, r.quoteEn, r.quoteEs)}”
+                        </p>
+                      </div>
+                      <p className="mt-4 text-xs font-medium uppercase tracking-[0.16em] text-oxblood">
+                        {r.name}
                       </p>
-                    </div>
-                    <p className="mt-4 text-xs font-medium uppercase tracking-[0.16em] text-oxblood">
-                      {r.name}
-                    </p>
-                  </li>
-                ))}
-              </ul>
+                    </li>
+                  ))}
+                </ul>
+                {REVIEWS.length - 1 > REVIEW_PREVIEW ? (
+                  <button
+                    type="button"
+                    className="mt-4 flex min-h-12 w-full items-center justify-center rounded-xl border border-ink/15 bg-white text-sm font-semibold text-ink hover:border-ink/30"
+                    onClick={() => setShowAllReviews((open) => !open)}
+                  >
+                    {showAllReviews ? t.reviewsLess : t.reviewsMore}
+                  </button>
+                ) : null}
+              </div>
             </div>
           </div>
         </section>
