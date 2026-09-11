@@ -23,7 +23,7 @@ export const SHOP = {
   googleReviewsUrl:
     "https://www.google.com/maps/place/El+Peque%C3%B1o+Barbershop/@40.3445208,-75.9177752,17z/data=!4m8!3m7!1s0x89c67748ca310c6d:0x42f2344c7e364043!8m2!3d40.3445208!4d-75.9177752!9m1!1b1!16s%2Fg%2F1pxwfq9w0",
   googleWriteReviewUrl:
-    "https://www.google.com/maps/place/El+Peque%C3%B1o+Barbershop/@40.3445208,-75.9177752,17z/data=!4m8!3m7!1s0x89c67748ca310c6d:0x42f2344c7e364043!8m2!3d40.3445208!4d-75.9177752!9m1!1b1!16s%2Fg%2F1pxwfq9w0",
+    "https://www.google.com/search?q=El+Peque%C3%B1o+Barbershop%2C+603+N+10th+St%2C+Reading%2C+PA&ludocid=4823975654006865987#lrd=0x89c67748ca310c6d:0x42f2344c7e364043,3,,,",
   ownerName: "Edwin Torres",
   ownerEmail: "edwintorres34@gmail.com",
 } as const;
