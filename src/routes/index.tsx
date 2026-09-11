@@ -15,6 +15,7 @@ import {
 } from "@/lib/shop";
 import { LangChip, SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { BarbersSection } from "@/components/barbers-section";
 import { Button } from "@/components/ui/button";
 import { BarberPole } from "@/components/barber-pole";
 import { GoogleG, GoogleStars, InstagramMark } from "@/components/brand-marks";
@@ -170,7 +171,7 @@ function ShopPage() {
             <div className="relative">
               <img
                 src={asset("/images/shop-chairs.jpg")}
-                alt={loc(lang, "Barber chairs", "Sillas de la barbería", "Cadeiras da barbearia")}
+                alt={loc(lang, "Barber chairs", "Sillas de la barber\u00eda", "Cadeiras da barbearia")}
                 className="aspect-[16/10] w-full rounded-xl object-cover"
               />
               <div className="absolute -left-3 bottom-8 hidden items-center gap-3 rounded-lg bg-ink px-4 py-3 text-paper sm:flex">
@@ -184,6 +185,8 @@ function ShopPage() {
             </div>
           </div>
         </section>
+
+        <BarbersSection />
 
         <section id="services" className="scroll-mt-32 bg-paper text-ink">
           <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-28">
@@ -242,10 +245,7 @@ function ShopPage() {
             </h3>
             <ul className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3">
               {GALLERY.map((img, i) => (
-                <li
-                  key={img.src}
-                  className={cn(img.wide && "col-span-2")}
-                >
+                <li key={img.src} className={cn(img.wide && "col-span-2")}>
                   <button
                     type="button"
                     onClick={() => setLightbox(HIGHLIGHTS.length + i)}
