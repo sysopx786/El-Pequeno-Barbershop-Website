@@ -68,7 +68,7 @@ export function LangChip({
       role="group"
       aria-label="Language"
       className={cn(
-        "inline-flex min-h-14 overflow-hidden rounded-xl bg-signal text-ink shadow-sm",
+        "inline-flex h-11 shrink-0 overflow-hidden rounded-lg bg-signal text-ink shadow-sm sm:h-14 sm:rounded-xl",
         className,
       )}
     >
@@ -78,12 +78,12 @@ export function LangChip({
           type="button"
           onClick={() => setLang(option)}
           className={cn(
-            "inline-flex min-h-14 flex-1 items-center justify-center gap-1.5 px-2 hover:bg-[#ffd34d] sm:gap-2 sm:px-3",
+            "inline-flex h-full shrink-0 items-center justify-center gap-1 px-1.5 hover:bg-[#ffd34d] sm:gap-2 sm:px-3",
             i === 0 && "border-r border-ink/25",
           )}
         >
-          <LangFlag lang={option} className="h-4 w-[1.25rem] sm:h-5 sm:w-[1.6rem]" />
-          <span className="text-[0.7rem] font-bold uppercase tracking-[0.1em] sm:text-sm">
+          <LangFlag lang={option} className="h-3 w-[0.95rem] sm:h-5 sm:w-[1.6rem]" />
+          <span className="whitespace-nowrap text-[0.62rem] font-bold uppercase tracking-wide sm:text-sm sm:tracking-[0.1em]">
             {full ? LANG_NAME[option] : LANG_SHORT[option]}
           </span>
         </button>
@@ -106,7 +106,7 @@ function StatusTablet() {
   return (
     <span
       className={cn(
-        "inline-flex min-h-14 flex-1 items-center justify-center gap-2 rounded-xl border-2 px-3 py-1.5 sm:flex-none sm:px-4",
+        "inline-flex h-11 min-w-0 flex-1 items-center justify-center gap-1.5 rounded-lg border-2 px-2 py-1 sm:h-14 sm:flex-none sm:gap-2 sm:rounded-xl sm:px-4",
         status.open
           ? "border-signal bg-signal/25 text-paper"
           : "status-flash border-signal bg-signal text-ink",
@@ -115,15 +115,15 @@ function StatusTablet() {
     >
       <span
         className={cn(
-          "size-3 shrink-0 rounded-full",
+          "size-2.5 shrink-0 rounded-full sm:size-3",
           status.open ? "status-dot bg-signal" : "status-dot bg-ink",
         )}
       />
       <span className="leading-tight">
-        <span className="block text-base font-bold uppercase tracking-wide">
+        <span className="block text-xs font-bold uppercase tracking-wide sm:text-base">
           {status.open ? t.open : t.closed}
         </span>
-        <span className="block text-xs font-semibold sm:text-sm">
+        <span className="block truncate text-[0.65rem] font-semibold sm:text-sm">
           {status.open ? t.closesAt : t.opensAt} {status.time}
         </span>
       </span>
@@ -171,9 +171,9 @@ export function SiteHeader() {
     <a
       href={`tel:${SHOP.phoneTel}`}
       aria-label={`${t.call} ${SHOP.phone}`}
-      className="inline-flex size-14 shrink-0 items-center justify-center rounded-full bg-[#22c55e] text-white shadow-sm hover:bg-[#16a34a]"
+      className="inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-[#22c55e] text-white shadow-sm hover:bg-[#16a34a] sm:size-14"
     >
-      <Phone className="size-6" />
+      <Phone className="size-5 sm:size-6" />
     </a>
   );
 
@@ -276,8 +276,8 @@ export function SiteHeader() {
           <div className="md:hidden">{menuBtn}</div>
         </div>
 
-        <div className="flex items-stretch gap-2 md:hidden">
-          <LangChip className="flex-1" />
+        <div className="flex min-w-0 items-stretch gap-1.5 md:hidden">
+          <LangChip />
           <StatusTablet />
           {phoneBtn}
         </div>
