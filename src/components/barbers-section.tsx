@@ -1,15 +1,12 @@
 import { loc, useI18n } from "@/lib/i18n";
 import { asset } from "@/lib/utils";
-import { EDWIN_PHOTO } from "@/lib/barber-photos/edwin";
-import { GABRIEL_PHOTO } from "@/lib/barber-photos/gabriel";
-import { JULIAN_PHOTO } from "@/lib/barber-photos/julian";
 
 const BARBERS = [
   {
     id: "edwin",
-    src: EDWIN_PHOTO,
+    src: "/images/barbers/edwin.jpg",
     name: "Edwin \u201cEl Peque\u00f1o\u201d Torres",
-    pos: "left" as const,
+    pos: "object-top",
     role: {
       en: "The one who built the shop",
       es: "El que arm\u00f3 la barber\u00eda",
@@ -28,9 +25,9 @@ const BARBERS = [
   },
   {
     id: "gabriel",
-    src: GABRIEL_PHOTO,
+    src: "/images/barbers/gabriel.jpg",
     name: "Gabriel",
-    pos: "top" as const,
+    pos: "object-[38%_18%]",
     role: {
       en: "Master of the Fade",
       es: "El maestro del fade",
@@ -49,9 +46,9 @@ const BARBERS = [
   },
   {
     id: "julian",
-    src: JULIAN_PHOTO,
+    src: "/images/barbers/julian.jpg",
     name: "Julian",
-    pos: "left" as const,
+    pos: "object-[28%_center]",
     role: {
       en: "The precision chair",
       es: "La silla de precisi\u00f3n",
@@ -96,13 +93,7 @@ export function BarbersSection() {
               <img
                 src={asset(barber.src)}
                 alt={loc(lang, barber.alt.en, barber.alt.es, barber.alt.pt)}
-                className={
-                  barber.pos === "left"
-                    ? "aspect-[4/5] w-full object-cover object-left"
-                    : barber.pos === "top"
-                      ? "aspect-[4/5] w-full object-cover object-top"
-                      : "aspect-[4/5] w-full object-cover object-center"
-                }
+                className={`aspect-[4/5] w-full object-cover ${barber.pos}`}
               />
               <div className="p-5 sm:p-6">
                 <p className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-oxblood">
