@@ -1,13 +1,10 @@
 import { loc, useI18n } from "@/lib/i18n";
 import { asset } from "@/lib/utils";
-import { EDWIN_PHOTO } from "@/lib/barber-photos/edwin";
-import { GABRIEL_PHOTO } from "@/lib/barber-photos/gabriel";
-import { JULIAN_PHOTO } from "@/lib/barber-photos/julian";
 
 const BARBERS = [
   {
     id: "edwin",
-    src: EDWIN_PHOTO,
+    src: "/images/shop-chairs.jpg",
     name: "Edwin \u201cEl Peque\u00f1o\u201d Torres",
     pos: "center" as const,
     role: {
@@ -28,9 +25,9 @@ const BARBERS = [
   },
   {
     id: "gabriel",
-    src: GABRIEL_PHOTO,
+    src: "/images/cut-fade-shape.jpg",
     name: "Gabriel",
-    pos: "left" as const,
+    pos: "top" as const,
     role: {
       en: "Master of the Fade",
       es: "El maestro del fade",
@@ -49,9 +46,9 @@ const BARBERS = [
   },
   {
     id: "julian",
-    src: JULIAN_PHOTO,
+    src: "/images/cut-fade-beard.jpg",
     name: "Julian",
-    pos: "left" as const,
+    pos: "top" as const,
     role: {
       en: "The precision chair",
       es: "La silla de precisi\u00f3n",
@@ -60,7 +57,7 @@ const BARBERS = [
     bio: {
       en: "Ask for Julian too. Tight lines, no guessing. People book him when they want it sharp today and still sharp next week.",
       es: "Pide a Julian tambi\u00e9n. L\u00edneas prietas, sin adivinar. Lo buscan cuando quieren verse bien hoy y seguir vi\u00e9ndose bien la semana que viene.",
-      pt: "Pe\u00e7a o Julian tamb\u00e9m. Linha justa, sem chute. Marcam com ele quando querem sair afiado hoje e continuar afiado na semana que vem.",
+      pt: "Pe\u00e7a o Julian tambi\u00e9m. Linha justa, sem chute. Marcam com ele quando querem sair afiado hoje e continuar afiado na semana que vem.",
     },
     alt: {
       en: "Julian working a precise cut",
@@ -99,7 +96,9 @@ export function BarbersSection() {
                 className={
                   barber.pos === "left"
                     ? "aspect-[4/5] w-full object-cover object-left"
-                    : "aspect-[4/5] w-full object-cover object-center"
+                    : barber.pos === "top"
+                      ? "aspect-[4/5] w-full object-cover object-top"
+                      : "aspect-[4/5] w-full object-cover object-center"
                 }
               />
               <div className="p-5 sm:p-6">
