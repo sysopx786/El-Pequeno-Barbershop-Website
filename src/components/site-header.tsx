@@ -5,7 +5,7 @@ import { BarberPole } from "@/components/barber-pole";
 import { Button } from "@/components/ui/button";
 import { GoogleG, GoogleStars } from "@/components/brand-marks";
 import { SHOP, getShopStatus } from "@/lib/shop";
-import { LANG_NAME, LANG_SHORT, otherLangs, useI18n, type Lang } from "@/lib/i18n";
+import { LANG_NAME, LANG_SHORT, loc, otherLangs, useI18n, type Lang } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 const LINKS = [
@@ -132,7 +132,7 @@ function StatusTablet() {
 }
 
 export function SiteHeader() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -211,6 +211,13 @@ export function SiteHeader() {
             </a>
           ))}
           <a
+            href="#barbers"
+            onClick={closeMenu}
+            className="flex min-h-12 items-center text-lg text-paper"
+          >
+            {loc(lang, "Barbers", "Barberos", "Barbeiros")}
+          </a>
+          <a
             href="#reviews"
             onClick={closeMenu}
             className="flex min-h-12 items-center gap-2.5 text-lg font-medium text-[#4285F4]"
@@ -231,7 +238,7 @@ export function SiteHeader() {
           <Button asChild variant="call">
             <a href={`tel:${SHOP.phoneTel}`} onClick={closeMenu}>
               <Phone className="size-4" />
-              {t.callShop} · {SHOP.phone}
+              {t.callShop} \u00b7 {SHOP.phone}
             </a>
           </Button>
           <Button asChild variant="line">
@@ -243,7 +250,7 @@ export function SiteHeader() {
           <Button asChild variant="paper">
             <a href={SHOP.smsHref} onClick={closeMenu}>
               <MessageSquare className="size-4" />
-              {t.textShop} · {SHOP.sms}
+              {t.textShop} \u00b7 {SHOP.sms}
             </a>
           </Button>
           <LangChip full className="h-14 w-full" />
@@ -266,7 +273,7 @@ export function SiteHeader() {
             <BarberPole height={40} />
             <span className="leading-none">
               <span className="font-display block truncate text-[1.25rem] font-semibold uppercase tracking-[0.06em] sm:text-[1.5rem] sm:tracking-[0.08em]">
-                El Pequeño
+                El Peque\u00f1o
               </span>
               <span className="block text-[0.7rem] uppercase tracking-[0.28em] text-cream/80">
                 Barbershop
