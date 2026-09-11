@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="8" fill="#12100e"/>
+  <defs>
+    <clipPath id="pole">
+      <rect x="12" y="7" width="8" height="17" rx="4"/>
+    </clipPath>
+  </defs>
+  <circle cx="16" cy="6.5" r="3.1" fill="#d9cbb6"/>
+  <rect x="12" y="7" width="8" height="17" rx="4" fill="#f4efe8"/>
+  <g clip-path="url(#pole)">
+    <path fill="#9b2c2c" d="M4 9 L28 1 L28 6 L4 14Z"/>
+    <path fill="#9b2c2c" d="M4 16 L28 8 L28 13 L4 21Z"/>
+    <path fill="#9b2c2c" d="M4 23 L28 15 L28 20 L4 28Z"/>
+  </g>
+  <rect x="11" y="23.5" width="10" height="3.2" rx="1.5" fill="#d9cbb6"/>
+</svg>
