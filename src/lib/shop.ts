@@ -314,6 +314,62 @@ export const GALLERY = [
     wide: false,
     pos: "center",
   },
+  {
+    src: "/images/blueprint/02-neighborhood-institution.jpg",
+    altEn: "More than a barbershop — a neighborhood institution",
+    altEs: "Más que una barbería — una institución del barrio",
+    wide: true,
+    pos: "center",
+  },
+  {
+    src: "/images/blueprint/03-reviews-foundation.jpg",
+    altEn: "The foundation of 73 five-star reviews",
+    altEs: "La base de 73 reseñas de cinco estrellas",
+    wide: true,
+    pos: "center",
+  },
+  {
+    src: "/images/blueprint/04-service-architecture.jpg",
+    altEn: "The service architecture",
+    altEs: "La arquitectura del servicio",
+    wide: true,
+    pos: "center",
+  },
+  {
+    src: "/images/blueprint/05-full-chair.jpg",
+    altEn: "Anatomy of The Full Chair",
+    altEs: "Anatomía de The Full Chair",
+    wide: true,
+    pos: "center",
+  },
+  {
+    src: "/images/blueprint/06-specialized-skills.jpg",
+    altEn: "Specialized skills for every chair",
+    altEs: "Habilidades especiales",
+    wide: true,
+    pos: "center",
+  },
+  {
+    src: "/images/blueprint/08-loyalty-quotes.jpg",
+    altEn: "Eleven years of loyalty",
+    altEs: "Once años de lealtad",
+    wide: true,
+    pos: "center",
+  },
+  {
+    src: "/images/blueprint/09-neighborhood-vibe.jpg",
+    altEn: "The neighborhood vibe",
+    altEs: "La vibra del barrio",
+    wide: true,
+    pos: "center",
+  },
+  {
+    src: "/images/blueprint/10-the-week.jpg",
+    altEn: "The week at 603",
+    altEs: "La semana en la 603",
+    wide: true,
+    pos: "center",
+  },
 ] as const;
 
 export const PHOTOS = [...HIGHLIGHTS, ...GALLERY];
