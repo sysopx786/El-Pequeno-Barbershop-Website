@@ -1,5 +1,6 @@
 import { loc, useI18n } from "@/lib/i18n";
 import { asset } from "@/lib/utils";
+import { WeekAt603 } from "@/components/week-at-603";
 
 const BARBERS = [
   {
@@ -57,7 +58,7 @@ const BARBERS = [
     bio: {
       en: "Ask for Julian too. Tight lines, no guessing. People book him when they want it sharp today and still sharp next week.",
       es: "Pide a Julian tambi\u00e9n. L\u00edneas prietas, sin adivinar. Lo buscan cuando quieren verse bien hoy y seguir vi\u00e9ndose bien la semana que viene.",
-      pt: "Pe\u00e7a o Julian tambi\u00e9m. Linha justa, sem chute. Marcam com ele quando querem sair afiado hoje e continuar afiado na semana que vem.",
+      pt: "Pe\u00e7a o Julian tamb\u00e9m. Linha justa, sem chute. Marcam com ele quando querem sair afiado hoje e continuar afiado na semana que vem.",
     },
     alt: {
       en: "Julian working a precise cut",
@@ -71,45 +72,48 @@ export function BarbersSection() {
   const { lang } = useI18n();
 
   return (
-    <section id="barbers" className="scroll-mt-32 bg-paper text-ink">
-      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-28">
-        <p className="text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-oxblood">
-          {loc(lang, "The chairs", "Las sillas", "As cadeiras")}
-        </p>
-        <h2 className="font-display mt-3 max-w-xl text-4xl font-semibold uppercase leading-[0.9] sm:text-5xl">
-          {loc(lang, "Ask for a name.", "Pide un nombre.", "Pe\u00e7a um nome.")}
-        </h2>
-        <p className="mt-5 max-w-2xl text-lg text-ink/80">
-          {loc(
-            lang,
-            "Ask for a name or take the next open seat.",
-            "Pide un nombre o t\u00f3mate la siguiente silla.",
-            "Pe\u00e7a um nome ou pegue a pr\u00f3xima cadeira.",
-          )}
-        </p>
-        <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {BARBERS.map((barber) => (
-            <li key={barber.id} className="overflow-hidden rounded-xl border border-ink/10 bg-white">
-              <img
-                src={asset(barber.src)}
-                alt={loc(lang, barber.alt.en, barber.alt.es, barber.alt.pt)}
-                className={`aspect-[4/5] w-full object-cover ${barber.pos}`}
-              />
-              <div className="p-5 sm:p-6">
-                <p className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-oxblood">
-                  {loc(lang, barber.role.en, barber.role.es, barber.role.pt)}
-                </p>
-                <h3 className="font-display mt-2 text-2xl font-semibold uppercase leading-tight">
-                  {barber.name}
-                </h3>
-                <p className="mt-3 text-[0.95rem] leading-relaxed text-ink/80">
-                  {loc(lang, barber.bio.en, barber.bio.es, barber.bio.pt)}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
+    <>
+      <section id="barbers" className="scroll-mt-32 bg-paper text-ink">
+        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-28">
+          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-oxblood">
+            {loc(lang, "The chairs", "Las sillas", "As cadeiras")}
+          </p>
+          <h2 className="font-display mt-3 max-w-xl text-4xl font-semibold uppercase leading-[0.9] sm:text-5xl">
+            {loc(lang, "Ask for a name.", "Pide un nombre.", "Pe\u00e7a um nome.")}
+          </h2>
+          <p className="mt-5 max-w-2xl text-lg text-ink/80">
+            {loc(
+              lang,
+              "Ask for a name or take the next open seat.",
+              "Pide un nombre o t\u00f3mate la siguiente silla.",
+              "Pe\u00e7a um nome ou pegue a pr\u00f3xima cadeira.",
+            )}
+          </p>
+          <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {BARBERS.map((barber) => (
+              <li key={barber.id} className="overflow-hidden rounded-xl border border-ink/10 bg-white">
+                <img
+                  src={asset(barber.src)}
+                  alt={loc(lang, barber.alt.en, barber.alt.es, barber.alt.pt)}
+                  className={`aspect-[4/5] w-full object-cover ${barber.pos}`}
+                />
+                <div className="p-5 sm:p-6">
+                  <p className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-oxblood">
+                    {loc(lang, barber.role.en, barber.role.es, barber.role.pt)}
+                  </p>
+                  <h3 className="font-display mt-2 text-2xl font-semibold uppercase leading-tight">
+                    {barber.name}
+                  </h3>
+                  <p className="mt-3 text-[0.95rem] leading-relaxed text-ink/80">
+                    {loc(lang, barber.bio.en, barber.bio.es, barber.bio.pt)}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+      <WeekAt603 />
+    </>
   );
 }
