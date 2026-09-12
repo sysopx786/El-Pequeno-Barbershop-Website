@@ -43,7 +43,7 @@ const copy = {
     aboutP3:
       "That hospitality is why people keep coming back. It’s more than a barbershop: a place to relax and connect, with professionalism and a personal touch. Ask for Julian. Ask for Gabriel. Or take the next open chair.",
     aboutStat1Value: "4.7",
-    aboutStat1Label: "stars from 71 reviews",
+    aboutStat1Label: "stars from 73 reviews",
     aboutStat2Value: "11+",
     aboutStat2Label: "years of regulars",
     aboutStat3Value: "7",
@@ -174,7 +174,7 @@ const copy = {
     aboutP3:
       "Por eso la gente vuelve. Es más que una barbería: un lugar para relajarse y conectar, con oficio y trato personal. Pide a Julian. Pide a Gabriel. O tómate la siguiente silla.",
     aboutStat1Value: "4.7",
-    aboutStat1Label: "estrellas en 71 reseñas",
+    aboutStat1Label: "estrellas en 73 reseñas",
     aboutStat2Value: "11+",
     aboutStat2Label: "años de clientes fijos",
     aboutStat3Value: "7",
@@ -305,7 +305,7 @@ const copy = {
     aboutP3:
       "Por isso o pessoal volta. É mais que uma barbearia: um lugar para relaxar e conectar, com ofício e trato pessoal. Peça o Julian. Peça o Gabriel. Ou pegue a próxima cadeira.",
     aboutStat1Value: "4.7",
-    aboutStat1Label: "estrelas em 71 avaliações",
+    aboutStat1Label: "estrelas em 73 avaliações",
     aboutStat2Value: "11+",
     aboutStat2Label: "anos de clientes fiéis",
     aboutStat3Value: "7",

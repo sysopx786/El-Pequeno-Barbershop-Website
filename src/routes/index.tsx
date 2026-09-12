@@ -13,10 +13,9 @@ import {
   SHOP,
   VIDEOS,
 } from "@/lib/shop";
-import { LangChip, SiteHeader } from "@/components/site-header";
+import { LangCircles, SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { BarbersSection } from "@/components/barbers-section";
-import { Button } from "@/components/ui/button";
 import { BarberPole } from "@/components/barber-pole";
 import { GoogleG, GoogleStars, InstagramMark } from "@/components/brand-marks";
 import { SocialLinks } from "@/components/social-links";
@@ -44,10 +43,10 @@ function ShopPage() {
   }, [lang]);
 
   return (
-    <div id="top" className="min-h-dvh bg-ink text-paper pb-20 md:pb-0">
+    <div id="top" className="min-h-dvh bg-ink text-paper pb-[calc(6.5rem+env(safe-area-inset-bottom))] md:pb-0">
       <SiteHeader />
 
-      <section className="bg-ink pt-[11rem] text-paper md:pt-32">
+      <section className="bg-ink pt-[5.5rem] text-paper md:pt-32">
         <h1 className="sr-only">
           {t.heroTitle} {t.heroSub}
         </h1>
@@ -55,7 +54,7 @@ function ShopPage() {
           <img
             src={asset("/images/logo-el-peque.jpg")}
             alt="El Peque Barber"
-            className="w-full"
+            className="mx-auto h-auto w-full max-h-[320px] object-contain md:max-h-none"
           />
         </div>
         <div className="mx-auto max-w-6xl px-4 pt-8 pb-10 sm:px-6 sm:pt-10 sm:pb-14">
@@ -63,47 +62,17 @@ function ShopPage() {
             {t.heroKicker}
           </p>
           <p className="mt-4 max-w-xl text-lg text-paper sm:text-xl">{t.heroLead}</p>
-          <div className="mt-6 flex items-center gap-2 overflow-x-auto sm:gap-3">
-            <Button asChild variant="call" size="sm" className="shrink-0">
-              <a href={`tel:${SHOP.phoneTel}`}>
-                <Phone className="size-3.5" />
-                {t.callShop}
-              </a>
-            </Button>
-            <Button asChild variant="ghost" size="sm" className="shrink-0">
-              <a href={SHOP.smsHref}>
-                <MessageSquare className="size-3.5" />
-                {t.textShop}
-              </a>
-            </Button>
-            <span className="shrink-0 text-[0.65rem] leading-tight text-cream sm:text-sm">
-              {t.walkins}
-            </span>
-            <a
-              href="#reviews"
-              className="inline-flex shrink-0 items-center gap-1 text-[0.65rem] text-cream hover:text-paper sm:gap-1.5 sm:text-sm"
-            >
-              <GoogleG className="size-3.5 shrink-0 sm:size-4" />
-              <GoogleStars count={5} className="flex gap-px sm:gap-0.5" />
-              <span className="whitespace-nowrap">
-                {SHOP.rating} · {SHOP.reviewCount}
-              </span>
-            </a>
-          </div>
           <a
-            href="#visit"
-            className="relative mt-4 block overflow-hidden rounded-xl border border-cream/20 bg-[#e8eef2] shadow-sm"
+            href="#reviews"
+            className="mt-8 flex w-full max-w-xl items-center gap-2.5 rounded-2xl bg-white px-4 py-3 text-ink shadow-sm"
           >
-            <iframe
-              title={t.heroHours}
-              src={SHOP.mapsEmbed}
-              className="pointer-events-none h-28 w-full sm:h-36"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              tabIndex={-1}
-            />
-            <span className="absolute bottom-2 left-2 inline-flex h-8 items-center rounded-md bg-white/95 px-2.5 text-xs font-semibold text-ink shadow">
-              {t.heroHours}
+            <GoogleG className="size-6 shrink-0" />
+            <span className="font-display text-[1.75rem] font-semibold leading-none">
+              {SHOP.rating}
+            </span>
+            <GoogleStars count={5} className="flex shrink-0 gap-px" />
+            <span className="truncate text-sm text-neutral-500">
+              {SHOP.reviewCount} {t.reviewsWord}
             </span>
           </a>
         </div>
@@ -330,7 +299,7 @@ function ShopPage() {
                 </div>
                 <p className="mt-6 text-xl text-ink">{t.reviewsPeople}</p>
                 <p className="mt-3 border-l-2 border-oxblood/40 pl-3 text-sm leading-relaxed text-ink/80">
-                  “{loc(lang, REVIEWS[0].quoteEn, REVIEWS[0].quoteEs)}”
+                  “{loc(lang, REVIEWS[0].quoteEn, REVIEWS[0].quoteEs, REVIEWS[0].quotePt)}”
                   <span className="mt-2 block text-xs uppercase tracking-[0.16em] text-muted">
                     {REVIEWS[0].name} · Google
                   </span>
@@ -375,7 +344,7 @@ function ShopPage() {
                       <div>
                         <GoogleStars count={r.stars} className="flex gap-0.5" />
                         <p className="mt-3 text-[0.95rem] leading-relaxed text-ink/85">
-                          “{loc(lang, r.quoteEn, r.quoteEs)}”
+                          “{loc(lang, r.quoteEn, r.quoteEs, r.quotePt)}”
                         </p>
                       </div>
                       <p className="mt-4 text-xs font-medium uppercase tracking-[0.16em] text-oxblood">
@@ -402,21 +371,23 @@ function ShopPage() {
       <div className="stripe-rule" />
       <SiteFooter />
 
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-ink/95 p-3 backdrop-blur-md md:hidden">
-        <div className="mx-auto flex max-w-lg gap-2">
-          <Button asChild variant="call" className="h-14 flex-1">
-            <a href={`tel:${SHOP.phoneTel}`}>
-              <Phone className="size-5" />
-              {t.call}
-            </a>
-          </Button>
-          <Button asChild variant="paper" className="h-14 flex-1">
-            <a href={SHOP.smsHref}>
-              <MessageSquare className="size-5" />
-              {t.text}
-            </a>
-          </Button>
-          <LangChip className="h-14 flex-1" />
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-ink/95 px-3 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-md md:hidden">
+        <div className="mx-auto grid max-w-lg grid-cols-4 items-center justify-items-center">
+          <LangCircles />
+          <a
+            href={`tel:${SHOP.phoneTel}`}
+            aria-label={`${t.call} ${SHOP.phone}`}
+            className="inline-flex size-14 items-center justify-center rounded-full bg-[#22c55e] text-white shadow-sm hover:bg-[#16a34a]"
+          >
+            <Phone className="size-7" />
+          </a>
+          <a
+            href={SHOP.smsHref}
+            aria-label={`${t.text} ${SHOP.sms}`}
+            className="inline-flex size-14 items-center justify-center rounded-full bg-[#3b82f6] text-white shadow-sm hover:bg-[#2563eb]"
+          >
+            <MessageSquare className="size-7" />
+          </a>
         </div>
       </div>
 

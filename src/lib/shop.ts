@@ -15,7 +15,7 @@ export const SHOP = {
   mapsEmbed:
     "https://maps.google.com/maps?q=603%20N%2010th%20St%2C%20Reading%20PA%2019604&z=16&output=embed",
   rating: 4.7,
-  reviewCount: 71,
+  reviewCount: 73,
   instagramHandle: "elpequenobarbershop01",
   instagramUrl: "https://www.instagram.com/elpequenobarbershop01/",
   tiktokHandle: "elpequenobarbershop01",
@@ -71,12 +71,15 @@ export const REVIEWS = [
       "Since I arrived in this city I found personalized service. The guys at the barbershop take excellent care of you — especially the manager and owner. I’ve been coming almost three years.",
     quoteEs:
       "Desde que llegué a esta ciudad encontré un servicio personalizado, los muchachos de la barbería brindan un excelente servicio. Especialmente el gerente y propietario. Ya tengo casi tres años disfrutando de sus servicios.",
+    quotePt:
+      "Desde que cheguei nesta cidade encontrei um atendimento personalizado. Os rapazes da barbearia cuidam muito bem de você — especialmente o gerente e o dono. Já venho há quase três anos.",
   },
   {
     name: "Juan Gonzalez",
     stars: 5,
     quoteEn: "The best of the best — they’re part of my family. Eleven years of good service.",
     quoteEs: "La mejor de la mejor, ya parte de mi familia porque ya son 11 años tratándome con el buen servicio.",
+    quotePt: "O melhor dos melhores — já fazem parte da minha família. Onze anos de bom atendimento.",
   },
   {
     name: "Kevin Paula",
@@ -85,6 +88,8 @@ export const REVIEWS = [
       "Great place to get a clean gentleman’s haircut. Kids friendly — I always go there with my children. The staff is bilingual, which helps if other shops are hard to communicate with. Strongly recommend.",
     quoteEs:
       "Excelente lugar para un corte de caballero. Amigable con los niños — siempre voy con mis hijos. El personal es bilingüe, lo que ayuda si en otras barberías cuesta comunicarse. Lo recomiendo mucho.",
+    quotePt:
+      "Ótimo lugar para um corte de cavalheiro. Amigável para crianças — sempre vou com os meus filhos. A equipe é bilíngue, o que ajuda se em outras barbearias é difícil se comunicar. Recomendo muito.",
   },
   {
     name: "Mike Ammouri",
@@ -93,6 +98,8 @@ export const REVIEWS = [
       "This was a great experience, my first time here. The guys are very nice and very detailed. I came with my nephew and son so we all got haircuts — we’re very happy. They got our business.",
     quoteEs:
       "Gran experiencia, mi primera vez. Los muchachos son amables y muy detallistas. Vine con mi sobrino y mi hijo para que nos cortaran a todos — salimos contentos. Ya somos clientes.",
+    quotePt:
+      "Foi uma ótima experiência, minha primeira vez. Os rapazes são muito legais e detalhistas. Fui com meu sobrinho e meu filho para todos cortarem o cabelo — saímos muito felizes. Já somos clientes.",
   },
   {
     name: "Darlyn Mejia",
@@ -101,6 +108,8 @@ export const REVIEWS = [
       "One of the best places to get a haircut. Cheap, great vibe, and a good time. I did a high fade — the best high fade I’ve gotten from a barber.",
     quoteEs:
       "De los mejores lugares para cortarse el pelo. Precio bueno, buena vibra y se pasa bien. Pedí un high fade — el mejor que me ha hecho un barbero.",
+    quotePt:
+      "Um dos melhores lugares para cortar o cabelo. Preço bom, ótima vibe e a gente se diverte. Pedi um high fade — o melhor que já ganhei de um barbeiro.",
   },
   {
     name: "Cam Towing",
@@ -109,24 +118,29 @@ export const REVIEWS = [
       "El Pequeño has to be one of the best barbers in Reading, PA. Edwin — they call him El Pequeño — is very good and professional. Clean, and he takes his time to give the cut you want. All the barbers here are skilled. My kids get their hair cut here too. Never had any complaints.",
     quoteEs:
       "El Pequeño es de los mejores barberos de Reading, PA. Edwin — le dicen El Pequeño — es muy bueno y profesional. Limpio, y se toma el tiempo para darte el corte que quieres. Todos los barberos del local son hábiles. Mis hijos también se cortan aquí. Nunca una queja.",
+    quotePt:
+      "O El Pequeño é um dos melhores barbeiros de Reading, PA. O Edwin — chamam ele de El Pequeño — é muito bom e profissional. Limpo, e ele tem paciência para fazer o corte que você quer. Todos os barbeiros da loja são habilidosos. Meus filhos também cortam aqui. Nunca tive reclamação.",
   },
   {
     name: "Bryant Goodwin",
     stars: 5,
     quoteEn: "Owner is a really good guy and I got a great haircut. I will be going back.",
     quoteEs: "El dueño es un tipo muy bueno y me hicieron un gran corte. Voy a volver.",
+    quotePt: "O dono é um cara muito legal e eu saí com um ótimo corte. Vou voltar.",
   },
   {
     name: "Mario Batista",
     stars: 5,
     quoteEn: "Amazing cuts, great chairs. And a shout to Gabriel, my barber.",
     quoteEs: "Cortes increíbles, sillas de lujo. Un saludo a Gabriel, mi barbero.",
+    quotePt: "Cortes incríveis, cadeiras ótimas. Um salve pro Gabriel, meu barbeiro.",
   },
   {
     name: "J.R. Hurtado",
     stars: 5,
     quoteEn: "Love this place. Everyone is friendly and they have great barbers.",
     quoteEs: "Me encanta este lugar. Todos son amables y tienen excelentes barberos.",
+    quotePt: "Adoro esse lugar. Todo mundo é simpático e eles têm ótimos barbeiros.",
   },
   {
     name: "Phil Rookard",
@@ -135,48 +149,57 @@ export const REVIEWS = [
       "Good hospitality. Some of the best barbers around — always warm and welcoming. Try them out. Good group of guys.",
     quoteEs:
       "Buena hospitalidad. De los mejores barberos del área — siempre cálidos y acogedores. Pruébenlos. Buen grupo de muchachos.",
+    quotePt:
+      "Boa hospitalidade. Alguns dos melhores barbeiros da região — sempre calorosos e acolhedores. Experimentem. Bom grupo de rapazes.",
   },
   {
     name: "Jose Fernandez",
     stars: 5,
     quoteEn: "This is the best place to get a haircut in Reading.",
     quoteEs: "Este es el mejor lugar para cortarse el pelo en Reading.",
+    quotePt: "Este é o melhor lugar para cortar o cabelo em Reading.",
   },
   {
     name: "Rosario Transportation",
     stars: 5,
     quoteEn: "Great spot. Good conversation and the barbers are phenomenal.",
     quoteEs: "Gran lugar. Buena conversación y los barberos son un fenómeno.",
+    quotePt: "Ótimo lugar. Boa conversa e os barbeiros são um fenômeno.",
   },
   {
     name: "Anthony Ortega",
     stars: 5,
     quoteEn: "Nice environment and barbers do good work.",
     quoteEs: "Buen ambiente y los barberos hacen buen trabajo.",
+    quotePt: "Ambiente legal e os barbeiros fazem um bom trabalho.",
   },
   {
     name: "I. Manuel Guzman",
     stars: 5,
     quoteEn: "Good place, excellent services, nice barbers.",
     quoteEs: "Buen lugar, excelente servicio, buenos barberos.",
+    quotePt: "Bom lugar, excelentes serviços, bons barbeiros.",
   },
   {
     name: "Christopher Kichline",
     stars: 5,
     quoteEn: "Ask for Julian.",
     quoteEs: "Pide a Julian.",
+    quotePt: "Peça o Julian.",
   },
   {
     name: "Jabriel Rubirosa",
     stars: 5,
     quoteEn: "Very nice place to cut your hair.",
     quoteEs: "Muy buen lugar para cortarse el pelo.",
+    quotePt: "Lugar muito bom para cortar o cabelo.",
   },
   {
     name: "Dell-V B-llo",
     stars: 5,
     quoteEn: "Good place for all ages.",
     quoteEs: "Buen lugar para todas las edades.",
+    quotePt: "Bom lugar para todas as idades.",
   },
 ] as const;
 

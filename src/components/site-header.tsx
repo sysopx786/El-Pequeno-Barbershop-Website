@@ -55,6 +55,29 @@ function LangFlag({ lang, className }: { lang: Lang; className?: string }) {
   return <UsFlag className={className} />;
 }
 
+export function LangCircles() {
+  const { lang, setLang } = useI18n();
+  const options = otherLangs(lang);
+  return (
+    <>
+      {options.map((option) => (
+        <button
+          key={option}
+          type="button"
+          onClick={() => setLang(option)}
+          aria-label={LANG_NAME[option]}
+          className="inline-flex size-14 shrink-0 flex-col items-center justify-center gap-0.5 rounded-full bg-signal text-ink shadow-sm hover:bg-[#ffd34d]"
+        >
+          <LangFlag lang={option} className="h-3.5 w-[1.05rem]" />
+          <span className="text-[0.65rem] font-bold uppercase leading-none tracking-wide">
+            {LANG_SHORT[option]}
+          </span>
+        </button>
+      ))}
+    </>
+  );
+}
+
 export function LangChip({
   full = false,
   className,
@@ -69,7 +92,7 @@ export function LangChip({
       role="group"
       aria-label="Language"
       className={cn(
-        "inline-flex h-11 shrink-0 overflow-hidden rounded-lg bg-signal text-ink shadow-sm sm:h-14 sm:rounded-xl",
+        "inline-flex h-12 shrink-0 overflow-hidden rounded-lg bg-signal text-ink shadow-sm sm:h-14 sm:rounded-xl",
         className,
       )}
     >
@@ -79,12 +102,12 @@ export function LangChip({
           type="button"
           onClick={() => setLang(option)}
           className={cn(
-            "inline-flex h-full shrink-0 items-center justify-center gap-1 px-1.5 hover:bg-[#ffd34d] sm:gap-2 sm:px-3",
+            "inline-flex h-full shrink-0 items-center justify-center gap-1 px-2.5 hover:bg-[#ffd34d] sm:gap-2 sm:px-3",
             i === 0 && "border-r border-ink/25",
           )}
         >
-          <LangFlag lang={option} className="h-3 w-[0.95rem] sm:h-5 sm:w-[1.6rem]" />
-          <span className="whitespace-nowrap text-[0.62rem] font-bold uppercase tracking-wide sm:text-sm sm:tracking-[0.1em]">
+          <LangFlag lang={option} className="h-4 w-[1.15rem] sm:h-5 sm:w-[1.6rem]" />
+          <span className="whitespace-nowrap text-xs font-bold uppercase tracking-wide sm:text-sm sm:tracking-[0.1em]">
             {full ? LANG_NAME[option] : LANG_SHORT[option]}
           </span>
         </button>
@@ -93,7 +116,7 @@ export function LangChip({
   );
 }
 
-function StatusTablet() {
+function StatusTablet({ className }: { className?: string }) {
   const { t } = useI18n();
   const [status, setStatus] = useState(() => getShopStatus());
 
@@ -107,10 +130,11 @@ function StatusTablet() {
   return (
     <span
       className={cn(
-        "inline-flex h-11 min-w-0 flex-1 items-center justify-center gap-1.5 rounded-lg border-2 px-2 py-1 sm:h-14 sm:flex-none sm:gap-2 sm:rounded-xl sm:px-4",
+        "inline-flex h-11 w-fit min-w-0 items-center gap-2 rounded-lg border-2 px-3 sm:h-14 sm:flex-none sm:gap-2.5 sm:rounded-xl sm:px-4",
         status.open
           ? "border-signal bg-signal/25 text-paper"
           : "status-flash border-signal bg-signal text-ink",
+        className,
       )}
       aria-live="polite"
     >
@@ -120,13 +144,11 @@ function StatusTablet() {
           status.open ? "status-dot bg-signal" : "status-dot bg-ink",
         )}
       />
-      <span className="leading-tight">
-        <span className="block text-xs font-bold uppercase tracking-wide sm:text-base">
-          {status.open ? t.open : t.closed}
-        </span>
-        <span className="block truncate text-[0.65rem] font-semibold sm:text-sm">
-          {status.open ? t.closesAt : t.opensAt} {status.time}
-        </span>
+      <span className="shrink-0 text-base font-bold uppercase tracking-wide sm:text-lg">
+        {status.open ? t.open : t.closed}
+      </span>
+      <span className="min-w-0 truncate text-sm font-semibold sm:text-base">
+        {status.open ? t.closesAt : t.opensAt} {status.time}
       </span>
     </span>
   );
@@ -158,13 +180,13 @@ export function SiteHeader() {
   const menuBtn = (
     <button
       type="button"
-      className="relative z-[92] inline-flex size-14 items-center justify-center rounded-md text-paper"
+      className="relative z-[92] inline-flex size-11 shrink-0 items-center justify-center rounded-md text-paper md:size-14"
       onClick={() => setOpen((v) => !v)}
       aria-expanded={open}
       aria-controls="site-menu"
       aria-label={open ? t.closeMenu : t.openMenu}
     >
-      {open ? <X className="size-8" /> : <Menu className="size-8" />}
+      {open ? <X className="size-6 md:size-8" /> : <Menu className="size-6 md:size-8" />}
     </button>
   );
 
@@ -192,7 +214,7 @@ export function SiteHeader() {
         aria-label={t.closeMenu}
         onClick={closeMenu}
       />
-      <div className="absolute inset-x-0 top-[7.25rem] max-h-[min(85dvh,44rem)] overflow-y-auto border-b border-line bg-ink px-4 py-5 shadow-2xl sm:top-24 sm:px-6">
+      <div className="absolute inset-x-0 top-[4.15rem] max-h-[min(85dvh,44rem)] overflow-y-auto border-b border-line bg-ink px-4 py-5 shadow-2xl md:top-24 md:px-6">
         <nav className="mx-auto flex max-w-6xl flex-col gap-1" aria-label="Menu">
           <a
             href="#top"
@@ -268,29 +290,22 @@ export function SiteHeader() {
       >
         {t.skip}
       </a>
-      <div className="relative z-[91] mx-auto flex max-w-6xl flex-col gap-2 px-3 py-2.5 sm:px-6 md:h-24 md:flex-row md:items-center md:justify-between md:gap-3 md:py-0">
-        <div className="flex items-center justify-between gap-2">
-          <a href="#top" className="flex min-w-0 items-center gap-2.5 text-paper">
-            <BarberPole height={40} />
-            <span className="leading-none">
-              <span className="font-display block truncate text-[1.25rem] font-semibold uppercase tracking-[0.06em] sm:text-[1.5rem] sm:tracking-[0.08em]">
-                El Pequeño
-              </span>
-              <span className="block text-[0.7rem] uppercase tracking-[0.28em] text-cream/80">
-                Barbershop
-              </span>
+      <div className="relative z-[91] mx-auto flex max-w-6xl items-center gap-2 px-3 py-2 sm:px-6 md:h-24 md:gap-3 md:py-0">
+        <a href="#top" className="flex min-w-0 shrink items-center gap-2 text-paper md:gap-2.5">
+          <BarberPole height={36} />
+          <span className="leading-none">
+            <span className="font-display block truncate text-[1.1rem] font-semibold uppercase tracking-[0.06em] sm:text-[1.5rem] sm:tracking-[0.08em]">
+              El Pequeño
             </span>
-          </a>
-          <div className="md:hidden">{menuBtn}</div>
-        </div>
+            <span className="block text-[0.62rem] uppercase tracking-[0.28em] text-cream/80 sm:text-[0.7rem]">
+              Barbershop
+            </span>
+          </span>
+        </a>
+        <StatusTablet className="ml-auto min-w-0 md:hidden" />
+        <div className="md:hidden">{menuBtn}</div>
 
-        <div className="flex min-w-0 items-stretch gap-1.5 md:hidden">
-          <LangChip />
-          <StatusTablet />
-          {phoneBtn}
-        </div>
-
-        <div className="hidden shrink-0 items-center gap-2.5 md:flex">
+        <div className="hidden shrink-0 items-center gap-2.5 md:ml-auto md:flex">
           <LangChip full />
           <StatusTablet />
           {phoneBtn}
