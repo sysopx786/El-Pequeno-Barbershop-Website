@@ -1,6 +1,7 @@
 import { loc, useI18n } from "@/lib/i18n";
 import { asset } from "@/lib/utils";
 import { WeekAt603 } from "@/components/week-at-603";
+import { ReviewsFoundation } from "@/components/reviews-foundation";
 
 const BARBERS = [
   {
@@ -113,6 +114,7 @@ export function BarbersSection() {
           </ul>
         </div>
       </section>
+      <ReviewsFoundation />
       <WeekAt603 />
     </>
   );
