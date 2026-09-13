@@ -2,6 +2,7 @@ import { loc, useI18n } from "@/lib/i18n";
 import { asset } from "@/lib/utils";
 import { WeekAt603 } from "@/components/week-at-603";
 import { ReviewsFoundation } from "@/components/reviews-foundation";
+import { FullChair } from "@/components/full-chair";
 
 const BARBERS = [
   {
@@ -17,7 +18,7 @@ const BARBERS = [
     bio: {
       en: "Edwin owns the place. He doesn\u2019t rush the cut. Some of these clients have been in his chair for years. You want the owner? Ask for him.",
       es: "Edwin es el due\u00f1o. No te apura el corte. Hay clientes que llevan a\u00f1os en su silla. \u00bfQuieres al owner? P\u00eddelo.",
-      pt: "Edwin \u00e9 o dono. Ele n\u00e3o apressa o corte. Tem cliente que est\u00e1 na cadeira dele h\u00e1 anos. Quer o owner? Pede ele.",
+      pt: "Edwin \u00e9 o dono. Ele n\u00e3o apressa o corte. Tem cliente que está na cadeira dele há anos. Quer o owner? Pede ele.",
     },
     alt: {
       en: "Edwin Torres at the chair",
@@ -115,6 +116,7 @@ export function BarbersSection() {
         </div>
       </section>
       <ReviewsFoundation />
+      <FullChair />
       <WeekAt603 />
     </>
   );
