@@ -1,13 +1,13 @@
 import { loc, useI18n } from "@/lib/i18n";
 
 const DAYS = [
-  { key: "mon", label: "Monday", close: "7:00 PM" },
-  { key: "tue", label: "Tuesday", close: "7:00 PM" },
-  { key: "wed", label: "Wednesday", close: "5:00 PM" },
-  { key: "thu", label: "Thursday", close: "7:00 PM" },
-  { key: "fri", label: "Friday", close: "8:00 PM" },
-  { key: "sat", label: "Saturday", close: "8:00 PM", peak: true },
-  { key: "sun", label: "Sunday", close: "4:00 PM", wind: true },
+  { key: "mon", short: "Mon", label: "Monday", close: "7:00 PM" },
+  { key: "tue", short: "Tue", label: "Tuesday", close: "7:00 PM" },
+  { key: "wed", short: "Wed", label: "Wednesday", close: "5:00 PM" },
+  { key: "thu", short: "Thu", label: "Thursday", close: "7:00 PM" },
+  { key: "fri", short: "Fri", label: "Friday", close: "8:00 PM" },
+  { key: "sat", short: "Sat", label: "Saturday", close: "8:00 PM", peak: true },
+  { key: "sun", short: "Sun", label: "Sunday", close: "4:00 PM", wind: true },
 ] as const;
 
 export function WeekAt603() {
@@ -32,18 +32,19 @@ export function WeekAt603() {
             )}
           </p>
 
-          <div className="mt-10 overflow-x-auto pb-2">
-            <div className="flex min-w-[40rem] overflow-hidden rounded-full border border-ink/20">
+          <div className="mt-10">
+            <div className="flex overflow-hidden rounded-full border border-ink/20">
               {DAYS.map((day) => (
                 <div
                   key={day.key}
                   className={
                     day.peak
-                      ? "flex min-h-14 flex-1 items-center justify-center bg-signal px-2 text-center text-xs font-bold uppercase tracking-wide text-ink sm:text-sm"
-                      : "flex min-h-14 flex-1 items-center justify-center border-r border-white/15 bg-ink px-2 text-center text-xs font-semibold uppercase tracking-wide text-paper last:border-r-0 sm:text-sm"
+                      ? "flex min-h-12 flex-1 items-center justify-center bg-signal px-1 text-center text-[0.7rem] font-bold uppercase tracking-wide text-ink sm:min-h-14 sm:px-2 sm:text-sm"
+                      : "flex min-h-12 flex-1 items-center justify-center border-r border-white/15 bg-ink px-1 text-center text-[0.7rem] font-semibold uppercase tracking-wide text-paper last:border-r-0 sm:min-h-14 sm:px-2 sm:text-sm"
                   }
                 >
-                  {day.label}
+                  <span className="md:hidden">{day.short}</span>
+                  <span className="hidden md:inline">{day.label}</span>
                 </div>
               ))}
             </div>
