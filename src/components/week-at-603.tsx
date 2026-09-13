@@ -1,5 +1,5 @@
-import { loc, useI18n, type Lang } from "@/lib/i18n";
-import { hoursByKey, type WeekdayKey } from "@/lib/shop";
+import { DAY_NAME, loc, useI18n, type Lang } from "@/lib/i18n";
+import { WEEK_HOURS, hoursByKey, minutesToClock, type WeekdayKey } from "@/lib/shop";
 
 const DAY_ORDER: WeekdayKey[] = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 
@@ -24,12 +24,9 @@ const DAY_FULL: Record<WeekdayKey, Record<Lang, string>> = {
 };
 
 export function WeekAt603() {
-  const { lang } = useI18n();
-  const wed = hoursByKey("wed");
-  const fri = hoursByKey("fri");
+  const { t, lang } = useI18n();
   const sat = hoursByKey("sat");
   const sun = hoursByKey("sun");
-  const mon = hoursByKey("mon");
 
   return (
     <section id="week" className="scroll-mt-32 bg-paper text-ink">
@@ -71,55 +68,20 @@ export function WeekAt603() {
             </div>
           </div>
 
-          <ul className="mt-6 grid gap-3 sm:grid-cols-3">
-            <li className="rounded-xl border border-ink/10 bg-white px-4 py-4">
-              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-oxblood">
-                {loc(lang, "Mon–Thu", "Lun–Jue", "Seg–Qui")}
-              </p>
-              <p className="mt-2 text-lg font-semibold">
-                {loc(lang, "Walk-ins welcome", "Walk-ins bienvenidos", "Walk-ins bem-vindos")}
-              </p>
-              <p className="mt-1 text-sm text-ink/70">
-                {loc(
-                  lang,
-                  `Closes ${mon.closeLabel}. Wednesday at ${wed.closeLabel}.`,
-                  `Cierra a las ${mon.closeLabel}. Miércoles a las ${wed.closeLabel}.`,
-                  `Fecha às ${mon.closeLabel}. Quarta às ${wed.closeLabel}.`,
-                )}
-              </p>
-            </li>
-            <li className="rounded-xl border border-signal bg-signal/25 px-4 py-4">
-              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-ink">
-                {loc(lang, "Friday + Saturday", "Viernes y sábado", "Sexta e sábado")}
-              </p>
-              <p className="mt-2 text-lg font-semibold">
-                {loc(lang, "Peak hours. Booking recommended.", "Hora pico. Mejor reservar.", "Horário de pico. Melhor reservar.")}
-              </p>
-              <p className="mt-1 text-sm text-ink/80">
-                {loc(
-                  lang,
-                  `Open ${fri.openLabel}–${fri.closeLabel}.`,
-                  `Abierto ${fri.openLabel}–${fri.closeLabel}.`,
-                  `Aberto ${fri.openLabel}–${fri.closeLabel}.`,
-                )}
-              </p>
-            </li>
-            <li className="rounded-xl border border-ink/10 bg-white px-4 py-4">
-              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-oxblood">
-                {loc(lang, "Sunday", "Domingo", "Domingo")}
-              </p>
-              <p className="mt-2 text-lg font-semibold">
-                {loc(lang, "Weekend wind-down", "Cierre de fin de semana", "Encerramento do fim de semana")}
-              </p>
-              <p className="mt-1 text-sm text-ink/70">
-                {loc(
-                  lang,
-                  `Walk-ins welcome. ${sun.openLabel}–${sun.closeLabel}.`,
-                  `Walk-ins bienvenidos. ${sun.openLabel}–${sun.closeLabel}.`,
-                  `Walk-ins bem-vindos. ${sun.openLabel}–${sun.closeLabel}.`,
-                )}
-              </p>
-            </li>
+          <ul className="mt-6 divide-y divide-ink/10 overflow-hidden rounded-xl border border-ink/10 bg-white">
+            {WEEK_HOURS.map((day, i) => (
+              <li
+                key={day.key}
+                className={`flex items-center justify-between gap-4 px-4 py-3 text-sm sm:px-5 ${
+                  day.key === "sat" ? "bg-signal/25 font-semibold" : ""
+                }`}
+              >
+                <span>{t[DAY_NAME[i]]}</span>
+                <span className="tabular-nums text-ink/80">
+                  {minutesToClock(day.open)} – {minutesToClock(day.close)}
+                </span>
+              </li>
+            ))}
           </ul>
 
           <p className="mt-8 text-sm italic text-ink/70">
@@ -131,7 +93,12 @@ export function WeekAt603() {
             )}
           </p>
           <p className="mt-3 text-sm font-medium text-ink">
-            {loc(lang, "Visit us at 603 N 10th St, Reading, PA 19604.", "Visítanos en 603 N 10th St, Reading, PA 19604.", "Visite 603 N 10th St, Reading, PA 19604.")}
+            {loc(
+              lang,
+              "Visit us at 603 N 10th St, Reading, PA 19604.",
+              "Visítanos en 603 N 10th St, Reading, PA 19604.",
+              "Visite 603 N 10th St, Reading, PA 19604.",
+            )}
           </p>
         </div>
       </div>
