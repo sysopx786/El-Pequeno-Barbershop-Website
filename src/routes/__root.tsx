@@ -1,5 +1,8 @@
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
+import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
+import { LanguageProvider, STORAGE_KEY } from "@/lib/i18n";
+import { openingHoursJsonLd, SHOP } from "@/lib/shop";
 import { asset } from "@/lib/utils";
 import appCss from "../styles.css?url";
 
@@ -9,20 +12,22 @@ const TITLE = "El Pequeño Barbershop | Haircuts, Fades & Braids in Reading, PA"
 const DESCRIPTION =
   "Walk-in barbershop at 603 N 10th St, Reading, PA. Fades, haircuts, kids’ cuts, braids, beard trims, and razor shaves. Open 7 days. Se habla español.";
 
+const LANG_BOOTSTRAP = `(function(){try{var k=${JSON.stringify(STORAGE_KEY)};var l=localStorage.getItem(k);if(!l){var m=document.cookie.match(new RegExp("(?:^|; )"+k+"=([^;]*)"));l=m?decodeURIComponent(m[1]):"";}if(l==="es"||l==="en"||l==="pt"){document.documentElement.lang=l==="pt"?"pt-BR":l;document.documentElement.setAttribute("data-lang",l);}}catch(e){}})();`;
+
 const LOCAL_BUSINESS_JSONLD = {
   "@context": "https://schema.org",
   "@type": "Barbershop",
-  name: "El Pequeño Barbershop",
-  alternateName: "El Pequeño",
+  name: SHOP.name,
+  alternateName: SHOP.shortName,
   url: SITE_URL,
-  telephone: "+16102689290",
-  email: "edwintorres34@gmail.com",
+  telephone: SHOP.phoneTel,
+  email: SHOP.ownerEmail,
   image: [OG_IMAGE, `${SITE_URL}images/shop-storefront.jpg`],
   logo: `${SITE_URL}images/logo-el-peque.jpg`,
   priceRange: "$",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "603 N 10th St",
+    streetAddress: SHOP.address,
     addressLocality: "Reading",
     addressRegion: "PA",
     postalCode: "19604",
@@ -33,22 +38,9 @@ const LOCAL_BUSINESS_JSONLD = {
     latitude: 40.3445208,
     longitude: -75.9177752,
   },
-  openingHoursSpecification: [
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday", opens: "10:00", closes: "16:00" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Monday", opens: "09:00", closes: "19:00" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Tuesday", opens: "09:00", closes: "19:00" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Wednesday", opens: "09:00", closes: "17:00" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Thursday", opens: "09:00", closes: "19:00" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Friday", opens: "08:00", closes: "20:00" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "08:00", closes: "20:00" },
-  ],
-  sameAs: [
-    "https://www.instagram.com/elpequenobarbershop01/",
-    "https://www.tiktok.com/@elpequenobarbershop01",
-    "https://www.google.com/maps/place/El+Peque%C3%B1o+Barbershop/@40.3445208,-75.9177752,17z/data=!4m6!3m5!1s0x89c67748ca310c6d:0x42f2344c7e364043!8m2!3d40.3445208!4d-75.9177752!16s%2Fg%2F1pxwfq9w0",
-  ],
-  hasMap:
-    "https://www.google.com/maps/place/El+Peque%C3%B1o+Barbershop/@40.3445208,-75.9177752,17z/data=!4m6!3m5!1s0x89c67748ca310c6d:0x42f2344c7e364043!8m2!3d40.3445208!4d-75.9177752!16s%2Fg%2F1pxwfq9w0",
+  openingHoursSpecification: openingHoursJsonLd(),
+  sameAs: [SHOP.instagramUrl, SHOP.tiktokUrl, SHOP.mapsUrl],
+  hasMap: SHOP.mapsUrl,
   areaServed: {
     "@type": "City",
     name: "Reading",
@@ -67,7 +59,7 @@ export const Route = createRootRoute({
       { title: TITLE },
       { name: "description", content: DESCRIPTION },
       { name: "robots", content: "index, follow" },
-      { name: "author", content: "El Pequeño Barbershop" },
+      { name: "author", content: SHOP.name },
       { name: "geo.region", content: "US-PA" },
       { name: "geo.placename", content: "Reading" },
       { name: "geo.position", content: "40.3445208;-75.9177752" },
@@ -76,7 +68,7 @@ export const Route = createRootRoute({
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "en_US" },
       { property: "og:locale:alternate", content: "es_US" },
-      { property: "og:site_name", content: "El Pequeño Barbershop" },
+      { property: "og:site_name", content: SHOP.name },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:url", content: SITE_URL },
@@ -103,6 +95,7 @@ export const Route = createRootRoute({
   component: () => (
     <html lang="en" className="antialiased" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: LANG_BOOTSTRAP }} />
         <HeadContent />
         <script
           type="application/ld+json"
@@ -111,7 +104,11 @@ export const Route = createRootRoute({
       </head>
       <body>
         <PreviewHostBridge />
-        <Outlet />
+        <AuthProvider>
+          <LanguageProvider>
+            <Outlet />
+          </LanguageProvider>
+        </AuthProvider>
         <Scripts />
       </body>
     </html>

@@ -1,8 +1,47 @@
-import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { createContext, useContext, useLayoutEffect, useMemo, useState, type ReactNode } from "react";
 
 export type Lang = "en" | "es" | "pt";
 
-const STORAGE_KEY = "el-pequeno-lang";
+export const STORAGE_KEY = "el-pequeno-lang";
+
+export function htmlLangAttr(lang: Lang) {
+  return lang === "pt" ? "pt-BR" : lang;
+}
+
+export function readStoredLang(): Lang | null {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored === "es" || stored === "en" || stored === "pt") return stored;
+  } catch {
+    /* private mode */
+  }
+  try {
+    const match = document.cookie.match(/(?:^|; )el-pequeno-lang=([^;]*)/);
+    const cookie = match ? decodeURIComponent(match[1]) : "";
+    if (cookie === "es" || cookie === "en" || cookie === "pt") return cookie;
+  } catch {
+    /* ignore */
+  }
+  return null;
+}
+
+function persistLang(next: Lang) {
+  try {
+    localStorage.setItem(STORAGE_KEY, next);
+  } catch {
+    /* private mode */
+  }
+  try {
+    document.cookie = `${STORAGE_KEY}=${next};path=/;max-age=31536000;samesite=lax`;
+  } catch {
+    /* ignore */
+  }
+}
+
+function getInitialLang(): Lang {
+  if (typeof window === "undefined") return "en";
+  return readStoredLang() ?? "en";
+}
 
 const copy = {
   en: {
@@ -439,12 +478,12 @@ export function loc(lang: Lang, en: string, es: string, pt?: string) {
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("en");
+  const [lang, setLangState] = useState<Lang>(getInitialLang);
 
-  useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === "es" || stored === "en" || stored === "pt") setLangState(stored);
-  }, []);
+  useLayoutEffect(() => {
+    document.documentElement.lang = htmlLangAttr(lang);
+    document.documentElement.setAttribute("data-lang", lang);
+  }, [lang]);
 
   const value = useMemo(
     () => ({
@@ -452,7 +491,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       t: copy[lang],
       setLang: (next: Lang) => {
         setLangState(next);
-        localStorage.setItem(STORAGE_KEY, next);
+        persistLang(next);
       },
     }),
     [lang],

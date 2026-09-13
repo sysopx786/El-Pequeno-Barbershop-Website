@@ -87,6 +87,8 @@ export function SiteFooter() {
             <img
               src={asset("/images/shop-storefront.jpg")}
               alt={loc(lang, "El Pequeño storefront", "Fachada de El Pequeño", "Fachada da El Pequeño")}
+              loading="lazy"
+              decoding="async"
               className="aspect-[16/10] w-full rounded-xl object-cover object-top"
             />
             <div className="overflow-hidden rounded-xl border border-ink/10">

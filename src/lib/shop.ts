@@ -29,24 +29,55 @@ export const SHOP = {
 } as const;
 
 export const WEEK_HOURS = [
-  { key: "sun", open: 10 * 60, close: 16 * 60 },
-  { key: "mon", open: 9 * 60, close: 19 * 60 },
-  { key: "tue", open: 9 * 60, close: 19 * 60 },
-  { key: "wed", open: 9 * 60, close: 17 * 60 },
-  { key: "thu", open: 9 * 60, close: 19 * 60 },
-  { key: "fri", open: 8 * 60, close: 20 * 60 },
-  { key: "sat", open: 8 * 60, close: 20 * 60 },
+  { key: "sun", jsonLd: "Sunday", open: 10 * 60, close: 16 * 60 },
+  { key: "mon", jsonLd: "Monday", open: 9 * 60, close: 19 * 60 },
+  { key: "tue", jsonLd: "Tuesday", open: 9 * 60, close: 19 * 60 },
+  { key: "wed", jsonLd: "Wednesday", open: 9 * 60, close: 17 * 60 },
+  { key: "thu", jsonLd: "Thursday", open: 9 * 60, close: 19 * 60 },
+  { key: "fri", jsonLd: "Friday", open: 8 * 60, close: 20 * 60 },
+  { key: "sat", jsonLd: "Saturday", open: 8 * 60, close: 20 * 60 },
 ] as const;
 
-export const HOUR_LABELS = [
-  { open: "10:00 AM", close: "4:00 PM" },
-  { open: "9:00 AM", close: "7:00 PM" },
-  { open: "9:00 AM", close: "7:00 PM" },
-  { open: "9:00 AM", close: "5:00 PM" },
-  { open: "9:00 AM", close: "7:00 PM" },
-  { open: "8:00 AM", close: "8:00 PM" },
-  { open: "8:00 AM", close: "8:00 PM" },
-] as const;
+export type WeekdayKey = (typeof WEEK_HOURS)[number]["key"];
+
+export function minutesToClock(mins: number): string {
+  const h24 = Math.floor(mins / 60);
+  const m = mins % 60;
+  const suffix = h24 < 12 ? "AM" : "PM";
+  const h12 = h24 % 12 || 12;
+  return `${h12}:${String(m).padStart(2, "0")} ${suffix}`;
+}
+
+export function minutesToJsonLd(mins: number): string {
+  const h24 = Math.floor(mins / 60);
+  const m = mins % 60;
+  return `${String(h24).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
+}
+
+export const HOUR_LABELS = WEEK_HOURS.map((day) => ({
+  open: minutesToClock(day.open),
+  close: minutesToClock(day.close),
+}));
+
+export function hoursByKey(key: WeekdayKey) {
+  const day = WEEK_HOURS.find((row) => row.key === key);
+  if (!day) throw new Error(`Unknown weekday ${key}`);
+  return {
+    ...day,
+    openLabel: minutesToClock(day.open),
+    closeLabel: minutesToClock(day.close),
+  };
+}
+
+export function openingHoursJsonLd() {
+  return WEEK_HOURS.map((day) => ({
+    "@type": "OpeningHoursSpecification" as const,
+    dayOfWeek: day.jsonLd,
+    opens: minutesToJsonLd(day.open),
+    closes: minutesToJsonLd(day.close),
+  }));
+}
+
 
 export const SERVICES = [
   { id: "mens", mins: 40 },
@@ -341,6 +372,7 @@ export function getReadingNow() {
       hour: "numeric",
       minute: "numeric",
       hourCycle: "h23",
+      hour12: false,
     })
       .formatToParts(new Date())
       .map((p) => [p.type, p.value]),
