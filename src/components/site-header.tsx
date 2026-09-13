@@ -12,7 +12,6 @@ const LINKS = [
   { href: "#about", key: "navAbout" },
   { href: "#barbers", key: "navBarbers" },
   { href: "#services", key: "navServices" },
-  { href: "#blueprint", key: "navBlueprint" },
   { href: "#gallery", key: "navGallery" },
   { href: "#featured", key: "navFeatured" },
   { href: "#videos", key: "navCuts" },
