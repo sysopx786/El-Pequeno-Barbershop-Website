@@ -63,57 +63,6 @@ export const SERVICES = [
 
 export type ServiceId = (typeof SERVICES)[number]["id"];
 
-export const BLUEPRINTS = [
-  {
-    src: "/images/blueprint/02-neighborhood-institution.jpg",
-    altEn: "More than a barbershop — a neighborhood institution",
-    altEs: "Más que una barbería — una institución del barrio",
-    altPt: "Mais que uma barbearia — uma instituição do bairro",
-  },
-  {
-    src: "/images/blueprint/03-reviews-foundation.jpg",
-    altEn: "The foundation of 73 five-star reviews",
-    altEs: "La base de 73 reseñas de cinco estrellas",
-    altPt: "A base de 73 avaliações de cinco estrelas",
-  },
-  {
-    src: "/images/blueprint/04-service-architecture.jpg",
-    altEn: "The service architecture — from a quick shape-up to custom artistry",
-    altEs: "La arquitectura del servicio — del arreglo rápido al trabajo a medida",
-    altPt: "A arquitetura do serviço — do retoque rápido ao trabalho sob medida",
-  },
-  {
-    src: "/images/blueprint/05-full-chair.jpg",
-    altEn: "Anatomy of The Full Chair — fade, lineup, brows, beard",
-    altEs: "Anatomía de The Full Chair — fade, lineup, cejas y barba",
-    altPt: "Anatomia do Full Chair — fade, lineup, sobrancelhas e barba",
-  },
-  {
-    src: "/images/blueprint/06-specialized-skills.jpg",
-    altEn: "Specialized skills — kids’ cuts and custom braids",
-    altEs: "Habilidades especiales — cortes de niños y trenzas a medida",
-    altPt: "Habilidades especiais — cortes infantis e tranças sob medida",
-  },
-  {
-    src: "/images/blueprint/08-loyalty-quotes.jpg",
-    altEn: "What Reading says — eleven years of loyalty",
-    altEs: "Lo que dice Reading — once años de lealtad",
-    altPt: "O que Reading diz — onze anos de lealdade",
-  },
-  {
-    src: "/images/blueprint/09-neighborhood-vibe.jpg",
-    altEn: "What Reading says — the neighborhood vibe",
-    altEs: "Lo que dice Reading — la vibra del barrio",
-    altPt: "O que Reading diz — a vibe do bairro",
-  },
-  {
-    src: "/images/blueprint/10-the-week.jpg",
-    altEn: "The week at 603 N 10th St — walk-ins welcome, Saturday is peak",
-    altEs: "La semana en 603 N 10th St — walk-ins bienvenidos, sábado es hora pico",
-    altPt: "A semana no 603 N 10th St — walk-ins bem-vindos, sábado é o pico",
-  },
-] as const;
-
 export const REVIEWS = [
   {
     name: "Melquiades Santana",
@@ -312,62 +261,6 @@ export const GALLERY = [
     altEn: "Unisex barbershop window on North 10th",
     altEs: "Ventana unisex en la North 10th",
     wide: false,
-    pos: "center",
-  },
-  {
-    src: "/images/blueprint/02-neighborhood-institution.jpg",
-    altEn: "More than a barbershop — a neighborhood institution",
-    altEs: "Más que una barbería — una institución del barrio",
-    wide: true,
-    pos: "center",
-  },
-  {
-    src: "/images/blueprint/03-reviews-foundation.jpg",
-    altEn: "The foundation of 73 five-star reviews",
-    altEs: "La base de 73 reseñas de cinco estrellas",
-    wide: true,
-    pos: "center",
-  },
-  {
-    src: "/images/blueprint/04-service-architecture.jpg",
-    altEn: "The service architecture",
-    altEs: "La arquitectura del servicio",
-    wide: true,
-    pos: "center",
-  },
-  {
-    src: "/images/blueprint/05-full-chair.jpg",
-    altEn: "Anatomy of The Full Chair",
-    altEs: "Anatomía de The Full Chair",
-    wide: true,
-    pos: "center",
-  },
-  {
-    src: "/images/blueprint/06-specialized-skills.jpg",
-    altEn: "Specialized skills for every chair",
-    altEs: "Habilidades especiales",
-    wide: true,
-    pos: "center",
-  },
-  {
-    src: "/images/blueprint/08-loyalty-quotes.jpg",
-    altEn: "Eleven years of loyalty",
-    altEs: "Once años de lealtad",
-    wide: true,
-    pos: "center",
-  },
-  {
-    src: "/images/blueprint/09-neighborhood-vibe.jpg",
-    altEn: "The neighborhood vibe",
-    altEs: "La vibra del barrio",
-    wide: true,
-    pos: "center",
-  },
-  {
-    src: "/images/blueprint/10-the-week.jpg",
-    altEn: "The week at 603",
-    altEs: "La semana en la 603",
-    wide: true,
     pos: "center",
   },
 ] as const;
