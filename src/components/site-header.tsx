@@ -5,16 +5,20 @@ import { BarberPole } from "@/components/barber-pole";
 import { Button } from "@/components/ui/button";
 import { GoogleG, GoogleStars } from "@/components/brand-marks";
 import { SHOP, getShopStatus } from "@/lib/shop";
-import { LANG_NAME, LANG_SHORT, loc, otherLangs, useI18n, type Lang } from "@/lib/i18n";
+import { LANG_NAME, LANG_SHORT, otherLangs, useI18n, type Lang } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 const LINKS = [
+  { href: "#featured", key: "navFeatured" },
   { href: "#about", key: "navAbout" },
   { href: "#barbers", key: "navBarbers" },
+  { href: "#foundation", key: "navFoundation" },
+  { href: "#week", key: "navWeek" },
   { href: "#services", key: "navServices" },
   { href: "#gallery", key: "navGallery" },
-  { href: "#featured", key: "navFeatured" },
   { href: "#videos", key: "navCuts" },
+  { href: "#reviews", key: "navReviews" },
+  { href: "#visit", key: "navVisit" },
 ] as const;
 
 function SpainFlag({ className }: { className?: string }) {
@@ -155,7 +159,7 @@ function StatusTablet({ className }: { className?: string }) {
 }
 
 export function SiteHeader() {
-  const { t, lang } = useI18n();
+  const { t } = useI18n();
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -228,34 +232,19 @@ export function SiteHeader() {
               key={link.href}
               href={link.href}
               onClick={closeMenu}
-              className="flex min-h-12 items-center text-lg text-paper"
+              className={
+                link.key === "navReviews"
+                  ? "flex min-h-12 items-center gap-2.5 text-lg font-medium text-[#4285F4]"
+                  : "flex min-h-12 items-center text-lg text-paper"
+              }
             >
+              {link.key === "navReviews" ? <GoogleG className="size-6 shrink-0" /> : null}
               {t[link.key]}
+              {link.key === "navReviews" ? (
+                <GoogleStars count={5} className="ml-1 flex gap-0.5" />
+              ) : null}
             </a>
           ))}
-          <a
-            href="#barbers"
-            onClick={closeMenu}
-            className="flex min-h-12 items-center text-lg text-paper"
-          >
-            {loc(lang, "Barbers", "Barberos", "Barbeiros")}
-          </a>
-          <a
-            href="#reviews"
-            onClick={closeMenu}
-            className="flex min-h-12 items-center gap-2.5 text-lg font-medium text-[#4285F4]"
-          >
-            <GoogleG className="size-6 shrink-0" />
-            {t.navReviews}
-            <GoogleStars count={5} className="ml-1 flex gap-0.5" />
-          </a>
-          <a
-            href="#visit"
-            onClick={closeMenu}
-            className="flex min-h-12 items-center text-lg text-paper"
-          >
-            {t.navVisit}
-          </a>
         </nav>
         <div className="mx-auto mt-5 flex max-w-6xl flex-col gap-3">
           <Button asChild variant="call">
