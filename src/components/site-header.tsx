@@ -134,7 +134,7 @@ function StatusTablet({ className }: { className?: string }) {
   return (
     <span
       className={cn(
-        "inline-flex h-11 w-fit min-w-0 items-center gap-2 rounded-lg border-2 px-3 sm:h-14 sm:flex-none sm:gap-2.5 sm:rounded-xl sm:px-4",
+        "inline-flex h-11 w-fit shrink-0 items-center gap-1.5 rounded-lg border-2 px-2.5 sm:h-14 sm:gap-2.5 sm:rounded-xl sm:px-4",
         status.open
           ? "border-signal bg-signal/25 text-paper"
           : "status-flash border-signal bg-signal text-ink",
@@ -148,10 +148,10 @@ function StatusTablet({ className }: { className?: string }) {
           status.open ? "status-dot bg-signal" : "status-dot bg-ink",
         )}
       />
-      <span className="shrink-0 text-base font-bold uppercase tracking-wide sm:text-lg">
+      <span className="shrink-0 text-sm font-bold uppercase tracking-wide sm:text-lg">
         {status.open ? t.open : t.closed}
       </span>
-      <span className="min-w-0 truncate text-sm font-semibold sm:text-base">
+      <span className="shrink-0 whitespace-nowrap text-xs font-semibold sm:text-base">
         {status.open ? t.closesAt : t.opensAt} {status.time}
       </span>
     </span>
@@ -291,7 +291,7 @@ export function SiteHeader() {
             </span>
           </span>
         </a>
-        <StatusTablet className="ml-auto min-w-0 md:hidden" />
+        <StatusTablet className="ml-auto md:hidden" />
         <div className="md:hidden">{menuBtn}</div>
 
         <div className="hidden shrink-0 items-center gap-2.5 md:ml-auto md:flex">

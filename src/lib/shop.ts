@@ -48,6 +48,16 @@ export function minutesToClock(mins: number): string {
   return `${h12}:${String(m).padStart(2, "0")} ${suffix}`;
 }
 
+/** Header chip: "10 AM" instead of "10:00 AM". */
+export function minutesToClockCompact(mins: number): string {
+  const h24 = Math.floor(mins / 60);
+  const m = mins % 60;
+  const suffix = h24 < 12 ? "AM" : "PM";
+  const h12 = h24 % 12 || 12;
+  if (m === 0) return `${h12} ${suffix}`;
+  return `${h12}:${String(m).padStart(2, "0")} ${suffix}`;
+}
+
 export function minutesToJsonLd(mins: number): string {
   const h24 = Math.floor(mins / 60);
   const m = mins % 60;
@@ -387,11 +397,11 @@ export function getShopStatus() {
   const { day, minutes } = getReadingNow();
   const hours = WEEK_HOURS[day];
   if (minutes >= hours.open && minutes < hours.close) {
-    return { open: true as const, time: HOUR_LABELS[day].close };
+    return { open: true as const, time: minutesToClockCompact(hours.close) };
   }
   if (minutes < hours.open) {
-    return { open: false as const, time: HOUR_LABELS[day].open };
+    return { open: false as const, time: minutesToClockCompact(hours.open) };
   }
-  const next = (day + 1) % 7;
-  return { open: false as const, time: HOUR_LABELS[next].open };
+  const next = WEEK_HOURS[(day + 1) % 7];
+  return { open: false as const, time: minutesToClockCompact(next.open) };
 }
