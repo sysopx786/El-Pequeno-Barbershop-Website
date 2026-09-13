@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sysopx786.github.io/El-Pequeno-Barbershop-Website/sitemap.xml
