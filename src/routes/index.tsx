@@ -53,7 +53,7 @@ function ShopPage() {
         <div className="mx-auto max-w-xl px-4 sm:max-w-2xl sm:px-6">
           <img
             src={asset("/images/logo-el-peque.jpg")}
-            alt="El Peque Barber"
+            alt="El Pequeño Barbershop"
             className="mx-auto h-auto w-full max-h-[320px] object-contain md:max-h-none"
           />
         </div>
